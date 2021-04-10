@@ -15,11 +15,11 @@ Logger::Logger(LOG_TYPE lt, string fn) : lt(lt), fn(fn), fs(ofstream(fn, ofstrea
 void Logger::Log(string info) {
 	if (lt == LOG_FILE) {
 		lock_guard<mutex> lck (mtx);
-		fs << info;
+		fs << info << '\n';
 	}
 	else {
 		lock_guard<mutex> lck (mtx);
-		cout << info;
+		cout << info << '\n';
 	}
 }
 
